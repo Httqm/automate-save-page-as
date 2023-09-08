@@ -132,9 +132,10 @@ sendKeysToWindow() {
 	#	https://askubuntu.com/questions/21262/shell-command-to-bring-a-program-window-in-front-of-another/21276#21276
 	#	https://code.google.com/archive/p/semicomplete/issues/66
 
-	# adding '--class', '--classname' or '--name' (i.e. being explicit) avoids the message :
-	#	Defaulting to search window name, class, and classname
-	# source : https://github.com/jordansissel/xdotool/issues/250
+	# more about parameters :
+	# '--class', '--classname' or '--name' (i.e. being explicit) avoids the message :
+	#		Defaulting to search window name, class, and classname
+	#	source : https://github.com/jordansissel/xdotool/issues/250
 	}
 
 
@@ -280,14 +281,14 @@ saveFileAs() {
 	fi
 	xdotool windowactivate "$savefileWindowId" key --delay 20 --clearmodifiers Return
 
-	info 'Saving web page ...'
+#	info 'Saving web page ...'
 	sleep "$waitTimeSecondsSave"	# Wait for the file to be completely saved
 	}
 
 
 closeBrowserTab() {
 	sendKeysToWindow 'ctrl+w' "$browserMainWindowTitle"
-	info 'Done!'
+#	info 'Done!'
 	}
 
 
