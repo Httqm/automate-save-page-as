@@ -212,7 +212,10 @@ loadBrowserVariables() {
 
 findSaveFileDialogBoxWindowId() {
 	windowIdValidationRegex='^[0-9]+$'	# window-id must be a valid integer
-	savefileWindowId="$(xdotool search --name "$savefileDialogTitle" | head -n 1)"
+	savefileWindowId="$(xdotool search --name "$savefileDialogTitle" | head -n 1)" || true
+	# When the 'Save as' window doesn't appear (why?), this command fails.
+	# Due to the global 'set -e', the whole script exits. Hence the trailing '|| true'
+
 	if [[ ! "$savefileWindowId" =~ $windowIdValidationRegex ]]; then
 		error "Unable to find window id for 'Save File' Dialog."
 		exit 1
